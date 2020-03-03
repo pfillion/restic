@@ -11,7 +11,8 @@ metadataTest:
     - key: 'org.label-schema.version'
       value: '.*'
       isRegex: true
-  entrypoint: ["entrypoint.sh", "restic"]
+  entrypoint: ["entrypoint.sh"]
+  cmd: ["restic"]
   workdir: ""
 
 fileExistenceTests:

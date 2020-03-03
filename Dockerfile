@@ -22,4 +22,6 @@ RUN apk add --update --no-cache \
 
 COPY rootfs /
 
-ENTRYPOINT [ "entrypoint.sh", "restic" ]
+ENTRYPOINT ["entrypoint.sh"]
+
+CMD ["restic"]
