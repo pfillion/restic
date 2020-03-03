@@ -1,0 +1,31 @@
+schemaVersion: "2.0.0"
+
+metadataTest:
+  labels:
+    - key: 'org.label-schema.build-date'
+      value: '.*'
+      isRegex: true
+    - key: 'org.label-schema.vcs-ref'
+      value: '.*'
+      isRegex: true  
+    - key: 'org.label-schema.version'
+      value: '.*'
+      isRegex: true
+  entrypoint: ["entrypoint.sh", "restic"]
+  workdir: ""
+
+fileExistenceTests:
+- name: 'entrypoint'
+  path: '/usr/local/bin/entrypoint.sh'
+  shouldExist: true
+  permissions: '-rwxr-xr-x'
+  uid: 0
+  gid: 0
+  isExecutableBy: 'group'
+- name: 'secret-helper'
+  path: '/usr/local/bin/secret-helper.sh'
+  shouldExist: true
+  permissions: '-rwxr-xr-x'
+  uid: 0
+  gid: 0
+  isExecutableBy: 'group'

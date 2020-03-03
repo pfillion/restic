@@ -1,0 +1,58 @@
+kind: pipeline
+type: docker
+name: main
+
+steps:
+- name: build
+  image: pfillion/drone-dind
+  volumes:
+  - name: docker_volume
+    path: /var/run
+  commands:
+  - sleep 10 # give docker enough time to start
+  - make build
+  - make VERSION=0.9.6 build
+  - make VERSION=0.9.5 build
+
+- name: test
+  image: pfillion/drone-dind
+  volumes:
+  - name: docker_volume
+    path: /var/run
+  commands:
+  - make test
+  - make VERSION=0.9.6 test
+  - make VERSION=0.9.5 test
+
+- name: docker-push
+  image: pfillion/drone-dind
+  volumes:
+  - name: docker_volume
+    path: /var/run
+  environment:
+    DOCKER_USERNAME:
+      from_secret: docker_username
+    DOCKER_PASSWORD:
+      from_secret: docker_password
+  commands:
+  - make docker-push
+  - make VERSION=0.9.6 docker-push
+  - make VERSION=0.9.5 docker-push
+
+# - name: notify-microbadger
+#   image: plugins/webhook
+#   settings:
+#     urls:
+#       from_secret: webhook_urls
+
+services:
+- name: docker
+  image: pfillion/drone-dind
+  privileged: true
+  volumes:
+  - name: docker_volume
+    path: /var/run
+
+volumes:
+- name: docker_volume
+  temp: {}
