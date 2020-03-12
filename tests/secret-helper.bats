@@ -12,6 +12,10 @@ function teardown(){
     unset ENV_VALUE_FILE
 }
 
+ function only_error {
+     "$@" 1>/dev/null
+ }
+
 @test "Given env with '_FILE' suffix, when get secret from env, then file content is returned" {
     echo "file_value" > fileWithContent
     export ENV_VALUE_FILE="fileWithContent"
@@ -59,9 +63,9 @@ function teardown(){
 @test "Given file not exist, when get secret from env, then error is returned" {
     export ENV_VALUE_FILE="fileWithContent"
     
-    run get_secret_from_env "ENV_VALUE"
+    run only_error get_secret_from_env "ENV_VALUE"
  
-    assert_output "The file 'fileWithContent' in environnement variable 'ENV_VALUE_FILE' not exist."
+    assert_output "The file 'fileWithContent' in environment variable 'ENV_VALUE_FILE' doesn't exist."
     assert_failure
 }
 
@@ -78,9 +82,9 @@ function teardown(){
 @test "Given secret file not exist, when export secret from env, then error is returned" {
     export ENV_VALUE_FILE="fileWithContent"
     
-    run export_secret_from_env "ENV_VALUE"
+    run only_error export_secret_from_env "ENV_VALUE"
 
-    assert_output "The file 'fileWithContent' in environnement variable 'ENV_VALUE_FILE' not exist."
+    assert_output "The file 'fileWithContent' in environment variable 'ENV_VALUE_FILE' doesn't exist."
     assert_failure
 }
 

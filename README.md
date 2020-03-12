@@ -1,8 +1,53 @@
 # restic
 
-[![Build Status](https://drone.pfillion.com/api/badges/pfillion/restic/status.svg)](https://drone.pfillion.com/pfillion/restic)
-[![microbadger image](https://images.microbadger.com/badges/image/pfillion/restic.svg)](https://microbadger.com/images/pfillion/restic "Get your own image badge on microbadger.com")
-[![microbadger image](https://images.microbadger.com/badges/version/pfillion/restic.svg)](https://microbadger.com/images/pfillion/restic "Get your own version badge on microbadger.com")
-[![microbadger image](https://images.microbadger.com/badges/commit/pfillion/restic.svg)](https://microbadger.com/images/pfillion/restic "Get your own commit badge on microbadger.com")
+[![Build Status](https://drone.pfillion.com/api/badges/pfillion/restic/status.svg?branch=master)](https://drone.pfillion.com/pfillion/restic)
+![GitHub](https://img.shields.io/github/license/pfillion/restic)
+[![GitHub last commit](https://img.shields.io/github/last-commit/pfillion/restic?logo=github)](https://github.com/pfillion/restic "GitHub projet")
 
-These are docker images for restic backup program.
+[![Docker Image Version (tag latest semver)](https://img.shields.io/docker/v/pfillion/restic/latest?logo=docker)](https://hub.docker.com/r/pfillion/restic "Docker Hub Repository")
+[![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/pfillion/restic/latest?logo=docker)](https://microbadger.com/images/pfillion/restic "Get your own commit badge on microbadger.com")
+[![MicroBadger Layers (tag)](https://img.shields.io/microbadger/layers/pfillion/restic/latest?logo=docker)](https://microbadger.com/images/pfillion/restic "Get your own commit badge on microbadger.com")
+
+[restic](https://restic.net) is a backup program that is fast, efficient and secure. It supports the three major operating systems (Linux, macOS, Windows) and a few smaller ones (FreeBSD, OpenBSD). For detailed usage check out the [documentation](https://restic.readthedocs.io/en/latest)
+
+These projet is a adapted docker image of the [official one](https://hub.docker.com/r/restic/restic). Mainly, it's to manage environnement variable by **secrets**.
+
+## Versions
+
+* [latest](https://github.com/pfillion/restic/tree/master) available as ```pfillion/restic:latest``` at [Docker Hub](https://hub.docker.com/r/pfillion/restic/)
+* [0.9.6](https://github.com/pfillion/restic/tree/master) available as ```pfillion/restic:0.9.6``` at [Docker Hub](https://hub.docker.com/r/pfillion/restic/)
+* [0.9.5](https://github.com/pfillion/restic/tree/master) available as ```pfillion/restic:0.9.5``` at [Docker Hub](https://hub.docker.com/r/pfillion/restic/)
+
+## Environment Variables
+
+When you start the `restic` image, you can adjust the backup program by passing one or more environment variables on the `docker run` command line.
+
+### `RESTIC_PASSWORD_FILE`
+
+This variable is mandatory and indicate to the program to read the repository password from a file.
+
+### `RESTIC_REPOSITORY`
+
+This variable is mandatory and specifies the repository to backup to or restore from.
+
+### `RESTIC_KEY_HINT`
+
+This variable is optional and allows you to specify the key ID of key to try decrypting first.
+
+## Docker Secrets
+
+As an alternative to passing sensitive information via environment variables, `_FILE` may be appended to the two previously listed environment variables, causing the initialization script to load the values for those variables from files present in the container. In particular, this can be used to load passwords from Docker secrets stored in `/run/secrets/<secret_name>` files. For example:
+
+```console
+docker run --rm -e RESTIC_REPOSITORY_FILE=/run/secrets/restic-repo -e RESTIC_PASSWORD_FILE=/run/secrets/restic-password pfillion/restic:latest restic snapshots
+```
+
+Currently, this is only supported for `RESTIC_REPOSITORY` and `RESTIC_KEY_HINT`.
+
+## Authors
+
+* [pfillion](https://github.com/pfillion)
+
+## License
+
+MIT
