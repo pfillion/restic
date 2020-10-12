@@ -5,7 +5,7 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/pfillion/restic?logo=github)](https://github.com/pfillion/restic "GitHub projet")
 
 [![Docker Image Version (tag latest semver)](https://img.shields.io/docker/v/pfillion/restic/latest?logo=docker)](https://hub.docker.com/r/pfillion/restic "Docker Hub Repository")
-[![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/pfillion/restic/latest?logo=docker)](https://microbadger.com/images/pfillion/restic "Get your own commit badge on microbadger.com")
+[![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/pfillion/restic/latest?logo=docker)](https://hub.docker.com/r/pfillion/restic "Docker Hub Repository")
 [![MicroBadger Layers (tag)](https://img.shields.io/microbadger/layers/pfillion/restic/latest?logo=docker)](https://microbadger.com/images/pfillion/restic "Get your own commit badge on microbadger.com")
 
 [restic](https://restic.net) is a backup program that is fast, efficient and secure. It supports the three major operating systems (Linux, macOS, Windows) and a few smaller ones (FreeBSD, OpenBSD). For detailed usage check out the [documentation](https://restic.readthedocs.io/en/latest)

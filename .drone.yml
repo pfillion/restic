@@ -11,8 +11,7 @@ steps:
   commands:
   - sleep 10 # give docker enough time to start
   - make build
-  - make VERSION=0.9.6 build
-  - make VERSION=0.9.5 build
+  - make VERSION=0.10.0 build
 
 - name: test
   image: pfillion/drone-dind
@@ -21,8 +20,7 @@ steps:
     path: /var/run
   commands:
   - make test
-  - make VERSION=0.9.6 test
-  - make VERSION=0.9.5 test
+  - make VERSION=0.10.0 test
 
 - name: docker-push
   image: pfillion/drone-dind
@@ -36,8 +34,7 @@ steps:
       from_secret: docker_password
   commands:
   - make docker-push
-  - make VERSION=0.9.6 docker-push
-  - make VERSION=0.9.5 docker-push
+  - make VERSION=0.10.0 docker-push
 
 - name: notify-microbadger
   image: plugins/webhook
