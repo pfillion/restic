@@ -15,6 +15,7 @@ These projet is a adapted docker image of the [official one](https://hub.docker.
 ## Versions
 
 * [latest](https://github.com/pfillion/restic/tree/master) available as ```pfillion/restic:latest``` at [Docker Hub](https://hub.docker.com/r/pfillion/restic/)
+* [0.10.0](https://github.com/pfillion/restic/tree/master) available as ```pfillion/restic:0.10.0``` at [Docker Hub](https://hub.docker.com/r/pfillion/restic/)
 * [0.9.6](https://github.com/pfillion/restic/tree/master) available as ```pfillion/restic:0.9.6``` at [Docker Hub](https://hub.docker.com/r/pfillion/restic/)
 * [0.9.5](https://github.com/pfillion/restic/tree/master) available as ```pfillion/restic:0.9.5``` at [Docker Hub](https://hub.docker.com/r/pfillion/restic/)
 
