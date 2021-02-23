@@ -38,6 +38,7 @@ ifdef DOCKER_USERNAME
 	@echo "$(DOCKER_PASSWORD)" | docker login -u "$(DOCKER_USERNAME)" --password-stdin
 endif
 	docker push $(NS)/$(IMAGE_NAME):$(VERSION)
+	docker push $(NS)/$(IMAGE_NAME):latest
     
 docker-shell: ## Run shell command in the container
 	docker run -it --rm --entrypoint bash --name $(CONTAINER_NAME)-$(CONTAINER_INSTANCE) $(PORTS) $(VOLUMES) $(ENV) $(NS)/$(IMAGE_NAME):$(VERSION)
