@@ -12,7 +12,7 @@ TEST_FOLDER ?= $(shell pwd)/tests
 
 # Docker parameters
 NS ?= pfillion
-VERSION ?= latest
+VERSION ?= 0.12.0
 IMAGE_NAME ?= restic
 CONTAINER_NAME ?= restic
 CONTAINER_INSTANCE ?= default
@@ -30,6 +30,7 @@ docker-build: ## Build the image form Dockerfile
 		--build-arg COMMIT=$(COMMIT) \
 		--build-arg AUTHOR=$(AUTHOR) \
 		-t $(NS)/$(IMAGE_NAME):$(VERSION) \
+		-t $(NS)/$(IMAGE_NAME):latest \
 		-f Dockerfile .
 
 docker-push: ## Push the image to a registry
