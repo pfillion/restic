@@ -17,17 +17,13 @@ function teardown(){
     
     # Test all environment variables supported by secret files.
 	docker exec ${CONTAINER_NAME} bash -c "echo 'secret1' > /file1"
-	docker exec ${CONTAINER_NAME} bash -c "echo 'secret2' > /file2"
     
 	run docker exec \
-		-e 'RESTIC_REPOSITORY_FILE=/file1' \
-		-e 'RESTIC_KEY_HINT_FILE=/file2' \
+		-e 'RESTIC_KEY_HINT_FILE=/file1' \
 		${CONTAINER_NAME} \
 		bash -c '. /usr/local/bin/entrypoint.sh && 
-			echo $RESTIC_REPOSITORY && 
 			echo $RESTIC_KEY_HINT'
 	
 	assert_success
 	assert_line --index 0 'secret1'
-	assert_line --index 1 'secret2'
 }

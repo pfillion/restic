@@ -20,7 +20,7 @@ These projet is a adapted docker image of the [official one](https://hub.docker.
 
 When you start the `restic` image, you can adjust the backup program by passing one or more environment variables on the `docker run` command line.
 
-### `RESTIC_PASSWORD_FILE`
+### `RESTIC_PASSWORD`
 
 This variable is mandatory and indicate to the program to read the repository password from a file.
 
@@ -34,13 +34,13 @@ This variable is optional and allows you to specify the key ID of key to try dec
 
 ## Docker Secrets
 
-As an alternative to passing sensitive information via environment variables, `_FILE` may be appended to the two previously listed environment variables, causing the initialization script to load the values for those variables from files present in the container. In particular, this can be used to load passwords from Docker secrets stored in `/run/secrets/<secret_name>` files. For example:
+As an alternative to passing sensitive information via environment variables, `_FILE` may be appended to the previously listed environment variables, causing the initialization script to load the values for those variables from files present in the container. In particular, this can be used to load passwords from Docker secrets stored in `/run/secrets/<secret_name>` files. For example:
 
 ```console
 docker run --rm -e RESTIC_REPOSITORY_FILE=/run/secrets/restic-repo -e RESTIC_PASSWORD_FILE=/run/secrets/restic-password pfillion/restic:latest restic snapshots
 ```
 
-Currently, this is only supported for `RESTIC_REPOSITORY` and `RESTIC_KEY_HINT`.
+Currently, this is only supported for `RESTIC_PASSWORD`, `RESTIC_REPOSITORY` and `RESTIC_KEY_HINT`.
 
 ## Authors
 
