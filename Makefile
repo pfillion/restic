@@ -12,7 +12,7 @@ TEST_FOLDER ?= $(shell pwd)/tests
 
 # Docker parameters
 NS ?= pfillion
-VERSION ?= 0.17.0
+VERSION ?= 0.18.0
 IMAGE_NAME ?= restic
 CONTAINER_NAME ?= restic
 CONTAINER_INSTANCE ?= default

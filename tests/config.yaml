@@ -39,14 +39,14 @@ fileExistenceTests:
 - name: 'entrypoint'
   path: '/usr/local/bin/entrypoint.sh'
   shouldExist: true
-  permissions: '-rwxr-xr-x'
+  permissions: '-rwxrwxr-x'
   uid: 0
   gid: 0
   isExecutableBy: 'group'
 - name: 'secret-helper'
   path: '/usr/local/bin/secret-helper.sh'
   shouldExist: true
-  permissions: '-rwxr-xr-x'
+  permissions: '-rwxrwxr-x'
   uid: 0
   gid: 0
   isExecutableBy: 'group'
