@@ -1,4 +1,4 @@
-ARG VERSION
+ARG VERSION=latest
 
 FROM restic/restic:$VERSION
 
@@ -23,6 +23,6 @@ LABEL \
 RUN apk add --update --no-cache \
     bash
 
-COPY rootfs /
+COPY --chmod=0755 rootfs /
 
 ENTRYPOINT ["entrypoint.sh"]

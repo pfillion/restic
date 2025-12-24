@@ -1,6 +1,6 @@
 # restic
 
-[![Build Status](https://drone.pfillion.com/api/badges/pfillion/restic/status.svg?branch=master)](https://drone.pfillion.com/pfillion/restic)
+[![status-badge](https://woodpecker.pfillion.com/api/badges/4/status.svg)](https://woodpecker.pfillion.com/repos/4)
 ![GitHub](https://img.shields.io/github/license/pfillion/restic)
 [![GitHub last commit](https://img.shields.io/github/last-commit/pfillion/restic?logo=github)](https://github.com/pfillion/restic "GitHub projet")
 
