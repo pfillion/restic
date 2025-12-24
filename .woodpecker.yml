@@ -20,7 +20,7 @@ steps:
     volumes: 
       - /var/run/docker.sock:/var/run/docker.sock
 
-  - name: push
+  - name: docker-push
     image: pfillion/dind
     environment:
       DOCKER_USERNAME:
@@ -28,7 +28,7 @@ steps:
       DOCKER_PASSWORD:
         from_secret: docker_password
     commands:
-      - make push
+      - make docker-push
     volumes: 
       - /var/run/docker.sock:/var/run/docker.sock
     when:
